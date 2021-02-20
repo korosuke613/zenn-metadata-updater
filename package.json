@@ -1,0 +1,58 @@
+{
+  "name": "zenn-metadata-updater",
+  "version": "0.0.0",
+  "description": "Update metadata in Zenn markdown file for npm.",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "exports": "./lib/index.js",
+  "types": "lib/index.d.ts",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "build": "npm-run-all -l -s clean compile",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prerelease": "npm-run-all -l -p lint test -s build",
+    "release": "shipjs prepare",
+    "clean": "rimraf lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korosuke613/zenn-metadata-updater.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "Futa Hirakoba <korosuke613613@gmail.com> (https://korosuke613.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "yaml-front-matter": "^4.1.1",
+    "js-yaml": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^11.0.4",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.9",
+    "@types/yaml-front-matter": "^4.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "jest": "^26.6.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.2.1",
+    "rimraf": "^3.0.2",
+    "shipjs": "^0.23.0",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}
