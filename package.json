@@ -29,9 +29,9 @@
     "url": "git+https://github.com/korosuke613/zenn-metadata-updater.git"
   },
   "keywords": [
-    "actions",
     "node",
-    "setup"
+    "zenn",
+    "yaml"
   ],
   "author": "Futa Hirakoba <korosuke613613@gmail.com> (https://korosuke613.github.io/)",
   "license": "MIT",
