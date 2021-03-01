@@ -104,7 +104,7 @@ export class Updater {
       isBuffer = false;
     }
 
-    const regex = /(---)[\n\S\s]*(---)/;
+    const regex = /(---)[\S\s\w\W]*?(---)/;
     const replacedMarkdown = markdown.replace(
       regex,
       `$1\n${this.dump(dumpOptions)}$2`

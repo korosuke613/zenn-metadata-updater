@@ -22,6 +22,10 @@ topics: ["ProductivityWeekly", "生産性向上"]
 published: false
 ---
 # Content start
+
+
+---
+aaa
 `;
 
 test("throw error because load dummy metadata", () => {
@@ -62,6 +66,10 @@ topics: ["fuga", "bar"]
 published: false
 ---
 # Content start
+
+
+---
+aaa
 `;
   const actual = updater.getUpdatedContent();
   expect(actual).toEqual(expected);
@@ -93,6 +101,10 @@ topics: ["ProductivityWeekly", "生産性向上"]
 published: true
 ---
 # Content start
+
+
+---
+aaa
 `;
   const actual = updater.getUpdatedContent();
   expect(actual).toEqual(expected);
@@ -110,6 +122,10 @@ topics: ["ProductivityWeekly", "生産性向上"]
 published: true
 ---
 # Content start
+
+
+---
+aaa
 `;
   const actual = updater.getUpdatedContent();
   expect(actual).toEqual(Buffer.from(expected));
