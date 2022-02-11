@@ -1,4 +1,9 @@
-import { NotEnoughPropertyError, ZennMetadata, Updater } from "../Updater";
+import {
+  NotEnoughPropertyError,
+  ZennMetadata,
+  Updater,
+  InvalidMetadataError,
+} from "../Updater";
 
 const errorInput = `---
 post: title one
@@ -16,10 +21,24 @@ more`;
 
 const input = `---
 title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: ""
+emoji: "😇"
 type: "idea"
 topics: ["ProductivityWeekly", "生産性向上"]
 published: false
+---
+# Content start
+
+
+---
+aaa
+`;
+
+const invalidInput = `---
+title: ""
+emoji: ""
+type: "hoge"
+topics: ["ProductivityWeekly", "生産性向上"]
+published: ""
 ---
 # Content start
 
@@ -75,27 +94,13 @@ aaa
   expect(actual).toEqual(expected);
 });
 
-test("dump metadata", () => {
-  const updater = new Updater();
-  updater.load(input);
-  updater.updateProperty("published", true);
-  const expected = `title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: ""
-type: "idea"
-topics: ["ProductivityWeekly", "生産性向上"]
-published: true
-`;
-  const actual = updater.dump();
-  expect(actual).toEqual(expected);
-});
-
 test("write file for string", () => {
   const updater = new Updater();
   updater.load(input);
   updater.updateProperty("published", true);
   const expected = `---
 title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: ""
+emoji: "😇"
 type: "idea"
 topics: ["ProductivityWeekly", "生産性向上"]
 published: true
@@ -116,7 +121,7 @@ test("write file for buffer", () => {
   updater.updateProperty("published", true);
   const expected = `---
 title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: ""
+emoji: "😇"
 type: "idea"
 topics: ["ProductivityWeekly", "生産性向上"]
 published: true
@@ -129,4 +134,18 @@ aaa
 `;
   const actual = updater.getUpdatedContent();
   expect(actual).toEqual(Buffer.from(expected));
+});
+
+test("validate valid metadata", () => {
+  const updater = new Updater();
+  updater.load(Buffer.from(input));
+  updater.validateProperty();
+});
+
+test("validate invalid metadata", () => {
+  const updater = new Updater();
+  updater.load(Buffer.from(invalidInput));
+  expect(() => {
+    updater.validateProperty();
+  }).toThrowError(new InvalidMetadataError("type, emoji, title, boolean"));
 });

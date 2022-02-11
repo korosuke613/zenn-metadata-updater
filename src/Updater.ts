@@ -19,6 +19,14 @@ export class NotLoadedMetadataError extends Error {
   }
 }
 
+export class InvalidMetadataError extends Error {
+  constructor(metadataType: string) {
+    const message = `Invalid metadata: ${metadataType}`;
+    super(message);
+    this.name = "InvalidMetadataError";
+  }
+}
+
 export interface ZennMetadata {
   [p: string]: any;
   title: string;
@@ -28,6 +36,7 @@ export interface ZennMetadata {
   published: boolean;
   __content?: string;
 }
+
 const isZennMetadata = (item: any): item is ZennMetadata =>
   item.title !== undefined;
 
@@ -40,6 +49,7 @@ export class Updater {
   };
   private content: string | Buffer | undefined;
 
+  // Read Zenn markdown.
   public load(content: string | Buffer) {
     const loadObject = loadFront(content);
     if (
@@ -56,6 +66,36 @@ export class Updater {
     delete this.metadata.__content;
   }
 
+  public validateProperty() {
+    if (!this.metadata) {
+      throw new NotLoadedMetadataError();
+    }
+
+    const metadataTypes: string[] = [];
+
+    if (this.metadata.type !== "idea" && this.metadata.type !== "tech") {
+      metadataTypes.push("type");
+    }
+
+    if (this.metadata.emoji === "") {
+      metadataTypes.push("emoji");
+    }
+
+    if (this.metadata.title === "") {
+      metadataTypes.push("title");
+    }
+
+    if (typeof this.metadata.published !== "boolean") {
+      metadataTypes.push("boolean");
+    }
+
+    if (metadataTypes.length !== 0) {
+      const stringTypes = metadataTypes.join(", ");
+      throw new InvalidMetadataError(stringTypes);
+    }
+  }
+
+  // Update property of Zenn markdown.
   updateProperty(param: ZennMetadata): void;
   updateProperty(
     key: keyof ZennMetadata,
@@ -75,13 +115,14 @@ export class Updater {
     this.metadata[paramOrKey] = value;
   }
 
-  public dump(dumpOptions = this.dumpOptions): string {
+  private dump(dumpOptions = this.dumpOptions): string {
     if (!this.metadata) {
       throw new NotLoadedMetadataError();
     }
     return dump(this.metadata, dumpOptions);
   }
 
+  // Get ZennMetadata
   public get(): ZennMetadata {
     if (!this.metadata) {
       throw new NotLoadedMetadataError();
@@ -90,6 +131,7 @@ export class Updater {
     return this.metadata;
   }
 
+  // Get updated Zenn markdown.
   public getUpdatedContent(dumpOptions = this.dumpOptions): string | Buffer {
     if (this.content === undefined) {
       throw new NotLoadedMetadataError();
