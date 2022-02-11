@@ -19,6 +19,14 @@ export class NotLoadedMetadataError extends Error {
   }
 }
 
+export class InvalidMetadataError extends Error {
+  constructor(metadataType: string) {
+    const message = `Invalid metadata: ${metadataType}`;
+    super(message);
+    this.name = "InvalidMetadataError";
+  }
+}
+
 export interface ZennMetadata {
   [p: string]: any;
   title: string;
@@ -56,6 +64,35 @@ export class Updater {
     this.content = content;
     this.metadata = loadFront(content) as ZennMetadata;
     delete this.metadata.__content;
+  }
+
+  public validateProperty() {
+    if (!this.metadata) {
+      throw new NotLoadedMetadataError();
+    }
+
+    const metadataTypes: string[] = [];
+
+    if (this.metadata.type !== "idea" && this.metadata.type !== "tech") {
+      metadataTypes.push("type");
+    }
+
+    if (this.metadata.emoji === "") {
+      metadataTypes.push("emoji");
+    }
+
+    if (this.metadata.title === "") {
+      metadataTypes.push("title");
+    }
+
+    if (typeof this.metadata.published !== "boolean") {
+      metadataTypes.push("boolean");
+    }
+
+    if (metadataTypes.length !== 0) {
+      const stringTypes = metadataTypes.join(", ");
+      throw new InvalidMetadataError(stringTypes);
+    }
   }
 
   // Update property of Zenn markdown.
