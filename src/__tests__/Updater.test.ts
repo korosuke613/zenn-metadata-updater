@@ -75,20 +75,6 @@ aaa
   expect(actual).toEqual(expected);
 });
 
-test("dump metadata", () => {
-  const updater = new Updater();
-  updater.load(input);
-  updater.updateProperty("published", true);
-  const expected = `title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: ""
-type: "idea"
-topics: ["ProductivityWeekly", "生産性向上"]
-published: true
-`;
-  const actual = updater.dump();
-  expect(actual).toEqual(expected);
-});
-
 test("write file for string", () => {
   const updater = new Updater();
   updater.load(input);

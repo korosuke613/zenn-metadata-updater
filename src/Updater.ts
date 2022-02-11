@@ -28,6 +28,7 @@ export interface ZennMetadata {
   published: boolean;
   __content?: string;
 }
+
 const isZennMetadata = (item: any): item is ZennMetadata =>
   item.title !== undefined;
 
@@ -40,6 +41,7 @@ export class Updater {
   };
   private content: string | Buffer | undefined;
 
+  // Read Zenn markdown.
   public load(content: string | Buffer) {
     const loadObject = loadFront(content);
     if (
@@ -56,6 +58,7 @@ export class Updater {
     delete this.metadata.__content;
   }
 
+  // Update property of Zenn markdown.
   updateProperty(param: ZennMetadata): void;
   updateProperty(
     key: keyof ZennMetadata,
@@ -75,13 +78,14 @@ export class Updater {
     this.metadata[paramOrKey] = value;
   }
 
-  public dump(dumpOptions = this.dumpOptions): string {
+  private dump(dumpOptions = this.dumpOptions): string {
     if (!this.metadata) {
       throw new NotLoadedMetadataError();
     }
     return dump(this.metadata, dumpOptions);
   }
 
+  // Get ZennMetadata
   public get(): ZennMetadata {
     if (!this.metadata) {
       throw new NotLoadedMetadataError();
@@ -90,6 +94,7 @@ export class Updater {
     return this.metadata;
   }
 
+  // Get updated Zenn markdown.
   public getUpdatedContent(dumpOptions = this.dumpOptions): string | Buffer {
     if (this.content === undefined) {
       throw new NotLoadedMetadataError();
