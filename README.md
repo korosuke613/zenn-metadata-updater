@@ -1,4 +1,6 @@
 # zenn-metadata-updater
+[![npm version](https://badge.fury.io/js/zenn-metadata-updater.svg)](https://badge.fury.io/js/zenn-metadata-updater)
+
 Update metadata in Zenn markdown file for npm.
 
 ## Install
