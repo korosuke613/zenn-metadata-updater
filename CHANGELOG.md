@@ -1,3 +1,13 @@
+# [0.2.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.1.1...v0.2.0) (2022-02-11)
+
+
+### Features
+
+* update Node.js ([c4d173d](https://github.com/korosuke613/zenn-metadata-updater/commit/c4d173db5740832d0ac49fd4a685b4a13110fd2f))
+* validate metadata function ([027685b](https://github.com/korosuke613/zenn-metadata-updater/commit/027685bd2bdec66a52bc9641ca463d5a6797faa0))
+
+
+
 ## [0.1.1](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.1.0...v0.1.1) (2021-03-01)
 
 
