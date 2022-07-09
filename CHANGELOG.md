@@ -1,4 +1,6 @@
-# [0.2.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.1.1...v0.2.0) (2022-02-11)
+# Changelog
+
+## [0.2.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.1.1...v0.2.0) (2022-02-11)
 
 
 ### Features
@@ -17,7 +19,7 @@
 
 
 
-# [0.1.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.0.0...v0.1.0) (2021-02-20)
+## [0.1.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.0.0...v0.1.0) (2021-02-20)
 
 
 ### Features
@@ -28,6 +30,3 @@
 ### Reverts
 
 * Revert "Merge pull request #3 from korosuke613/releases/v0.1.0" ([213e4a0](https://github.com/korosuke613/zenn-metadata-updater/commit/213e4a0f62a845121b004f3b86277bafee731a7a)), closes [#3](https://github.com/korosuke613/zenn-metadata-updater/issues/3)
-
-
-

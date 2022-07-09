@@ -17,8 +17,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "prerelease": "npm-run-all -l -p lint test -s build",
-    "release": "shipjs prepare",
+    "prepublishOnly": "npm-run-all -l -p lint test -s build",
     "clean": "rimraf lib"
   },
   "files": [
