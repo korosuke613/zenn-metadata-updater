@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.1](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.2.0...v0.2.1) (2022-07-09)
+
+
+### Bug Fixes
+
+* bump ejs from 3.1.6 to 3.1.8 ([431b038](https://github.com/korosuke613/zenn-metadata-updater/commit/431b038e4e416edd8014f37817c771e34998fcc2))
+* bump minimist from 1.2.5 to 1.2.6 ([cf9a182](https://github.com/korosuke613/zenn-metadata-updater/commit/cf9a1820307fd708c37d1d3d80571e6523a899ee))
+* bump shell-quote from 1.7.2 to 1.7.3 ([b5e4dc7](https://github.com/korosuke613/zenn-metadata-updater/commit/b5e4dc75c52dead1b448f7827a387f0c875df0bc))
+* npm audit fix ([5a71ca8](https://github.com/korosuke613/zenn-metadata-updater/commit/5a71ca821dd61c56867e4db037f1fb8aa5072ea8))
+
 ## [0.2.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.1.1...v0.2.0) (2022-02-11)
 
 
