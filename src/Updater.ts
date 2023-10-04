@@ -48,6 +48,7 @@ export class Updater {
     forceQuotes: true,
   };
   private content: string | Buffer | undefined;
+  private readonly MAX_TITLE_LENGTH = 70;
 
   // Read Zenn markdown.
   public load(content: string | Buffer) {
@@ -81,7 +82,10 @@ export class Updater {
       metadataTypes.push("emoji");
     }
 
-    if (this.metadata.title === "") {
+    if (
+      this.metadata.title === "" &&
+      this.metadata.title.length <= this.MAX_TITLE_LENGTH // https://github.com/zenn-dev/zenn-editor/blob/07b2c80465466e8830e6486d0f2b0c7a8d4bee45/packages/zenn-model/src/utils.ts#L36-L44
+    ) {
       metadataTypes.push("title");
     }
 
