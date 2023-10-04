@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.2.1...v0.3.0) (2023-10-04)
+
+
+### Features
+
+* check title length for validate ([80c43fa](https://github.com/korosuke613/zenn-metadata-updater/commit/80c43fa15458a920b4c3f8e65fe27063c2a16dca))
+
 ## [0.2.1](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.2.0...v0.2.1) (2022-07-09)
 
 
