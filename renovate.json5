@@ -11,7 +11,7 @@
     {
       matchManagers: ["npm"],
       matchDepTypes: ["devDependencies"],
-      groupSlug: "dev",
+      semanticCommitScope: "deps-dev",
       automerge: true,
     },
     {
