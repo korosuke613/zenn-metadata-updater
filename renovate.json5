@@ -1,20 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "config:base",
-    ":label(renovate)", // https://docs.renovatebot.com/presets-default/#labelarg0
+    "config:best-practices",
+    ":label(renovate)",
     ":timezone(Asia/Tokyo)",
-    ":enableVulnerabilityAlertsWithLabel(security)", // Raise PR when vulnerability alerts are detected with label security.
-//    ":semanticCommitTypeAll(chore)", // If semantic commits detected, use semantic commit type chore for all
-    "schedule:monthly"
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    "schedule:weekly"
   ],
-
-  separateMajorMinor: false,
   packageRules: [
     {
       matchManagers: ["npm"],
-      groupName: "npm",
-      automerge: true
+      matchDepTypes: ["devDependencies"],
+      groupSlug: "dev",
+      automerge: true,
+    },
+    {
+      matchManagers: ["npm"],
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
     }
   ]
 }
