@@ -3,7 +3,7 @@ import { dump, DumpOptions } from "js-yaml";
 
 export class NotEnoughPropertyError extends Error {
   constructor(
-    message = "Needs properties `title`, `emoji`, `type`, `topics` and `publish`."
+    message = "Needs properties `title`, `emoji`, `type`, `topics` and `publish`.",
   ) {
     super(message);
     this.name = "NotEnoughPropertyError";
@@ -12,7 +12,7 @@ export class NotEnoughPropertyError extends Error {
 
 export class NotLoadedMetadataError extends Error {
   constructor(
-    message = "The md has not been loaded. Please use the load function to load md first."
+    message = "The md has not been loaded. Please use the load function to load md first.",
   ) {
     super(message);
     this.name = "NotLoadedMetadataError";
@@ -103,11 +103,11 @@ export class Updater {
   updateProperty(param: ZennMetadata): void;
   updateProperty(
     key: keyof ZennMetadata,
-    value: string | string[] | boolean
+    value: string | string[] | boolean,
   ): void;
   public updateProperty(
     paramOrKey: ZennMetadata | keyof ZennMetadata,
-    value?: string | string[] | boolean
+    value?: string | string[] | boolean,
   ): void {
     if (!this.metadata) {
       throw new NotLoadedMetadataError();
@@ -153,7 +153,7 @@ export class Updater {
     const regex = /(---)[\S\s\w\W]*?(---)/;
     const replacedMarkdown = markdown.replace(
       regex,
-      `$1\n${this.dump(dumpOptions)}$2`
+      `$1\n${this.dump(dumpOptions)}$2`,
     );
 
     if (isBuffer) {
