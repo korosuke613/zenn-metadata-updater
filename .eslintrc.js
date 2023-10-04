@@ -1,5 +1,9 @@
 module.exports = {
-  extends: ["@cybozu/eslint-config/presets/node-typescript-prettier"],
+  extends: [
+    "@cybozu/eslint-config/presets/node",
+    "@cybozu/eslint-config/presets/typescript",
+    "prettier"
+  ],
   plugins: ["jest"],
   env: {
     node: true,
