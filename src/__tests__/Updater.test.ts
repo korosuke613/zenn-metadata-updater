@@ -1,8 +1,8 @@
 import {
-  NotEnoughPropertyError,
-  ZennMetadata,
-  Updater,
   InvalidMetadataError,
+  NotEnoughPropertyError,
+  Updater,
+  ZennMetadata,
 } from "../Updater";
 
 const errorInput = `---
@@ -47,6 +47,36 @@ published: ""
 aaa
 `;
 
+const invalidInput2 = `---
+title: "hoge"
+emoji: "😎"
+type: "tech"
+topics: ["ProductivityWeekly", "生産性向上"]
+published: false
+published_at: "2023-09-09 12:23"
+---
+# Content start
+
+
+---
+aaa
+`;
+
+const invalidInput3 = `---
+title: "hoge"
+emoji: "😎"
+type: "tech"
+topics: ["ProductivityWeekly", "生産性向上"]
+published: true
+published_at: "hoge"
+---
+# Content start
+
+
+---
+aaa
+`;
+
 test("throw error because load dummy metadata", () => {
   const updater = new Updater();
   expect(() => {
@@ -83,6 +113,36 @@ emoji: "㊙️"
 type: "tech"
 topics: ["fuga", "bar"]
 published: false
+---
+# Content start
+
+
+---
+aaa
+`;
+  const actual = updater.getUpdatedContent();
+  expect(actual).toEqual(expected);
+});
+
+test("update property for param 2", () => {
+  const updater = new Updater();
+  updater.load(input);
+  const param: ZennMetadata = {
+    title: "hoge",
+    emoji: "㊙️",
+    type: "tech",
+    topics: ["fuga", "bar"],
+    published: true,
+    published_at: "2023-09-09 12:23",
+  };
+  updater.updateProperty(param);
+  const expected = `---
+title: "hoge"
+emoji: "㊙️"
+type: "tech"
+topics: ["fuga", "bar"]
+published: true
+published_at: "2023-09-09 12:23"
 ---
 # Content start
 
@@ -148,4 +208,20 @@ test("validate invalid metadata", () => {
   expect(() => {
     updater.validateProperty();
   }).toThrowError(new InvalidMetadataError("type, emoji, title, boolean"));
+});
+
+test("validate invalid published_at: published false", () => {
+  const updater = new Updater();
+  updater.load(Buffer.from(invalidInput2));
+  expect(() => {
+    updater.validateProperty();
+  }).toThrowError(new InvalidMetadataError("published_at"));
+});
+
+test("validate invalid published_at: invalid format", () => {
+  const updater = new Updater();
+  updater.load(Buffer.from(invalidInput3));
+  expect(() => {
+    updater.validateProperty();
+  }).toThrowError(new InvalidMetadataError("published_at"));
 });
