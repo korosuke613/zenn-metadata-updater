@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.3.1...v0.4.0) (2023-10-08)
+
+
+### Features
+
+* support property for `published_at` ([ce91a29](https://github.com/korosuke613/zenn-metadata-updater/commit/ce91a2985a0f31808d3b23a415226bc27593f782))
+
 ## [0.3.1](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.3.0...v0.3.1) (2023-10-04)
 
 
