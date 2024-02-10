@@ -44,9 +44,9 @@ const isZennMetadata = (item: any): item is ZennMetadata =>
 export class Updater {
   private metadata: ZennMetadata | undefined;
   private dumpOptions: DumpOptions = {
-    flowLevel: 1,
+    flowLevel: -1,
     quotingType: '"',
-    forceQuotes: true,
+    forceQuotes: false,
   };
   private content: string | Buffer | undefined;
   private readonly MAX_TITLE_LENGTH = 70;
