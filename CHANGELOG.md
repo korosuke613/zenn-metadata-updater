@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.0 (2024-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* change flowLevel to -1 and forceQuote to false for dump
+* **deps** update dependency node to v20
+
+
+### Bug Fixes
+
+* change flowLevel to -1 and forceQuote to false for dump ([e3f2665](https://github.com/korosuke613/zenn-metadata-updater/commit/e3f2665ef4693d92adc12cd065dab0530c07848d))
+* **deps:** update dependency typescript to v5.3.3 ([17754cc](https://github.com/korosuke613/zenn-metadata-updater/commit/17754cc099cbacaa18e893ddfd7f0e2ec8a2f33c))
+* **deps** update dependency node to v20 ([0820b3](https://github.com/korosuke613/zenn-metadata-updater/commit/0820b352faf652aab8f103c64e020d0f76ac8d7b))
+
 ## [0.4.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.3.1...v0.4.0) (2023-10-08)
 
 
