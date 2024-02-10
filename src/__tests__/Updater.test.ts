@@ -108,10 +108,12 @@ test("update property for param", () => {
   };
   updater.updateProperty(param);
   const expected = `---
-title: "hoge"
-emoji: "㊙️"
-type: "tech"
-topics: ["fuga", "bar"]
+title: hoge
+emoji: ㊙️
+type: tech
+topics:
+  - fuga
+  - bar
 published: false
 ---
 # Content start
@@ -137,12 +139,63 @@ test("update property for param 2", () => {
   };
   updater.updateProperty(param);
   const expected = `---
-title: "hoge"
-emoji: "㊙️"
-type: "tech"
-topics: ["fuga", "bar"]
+title: hoge
+emoji: ㊙️
+type: tech
+topics:
+  - fuga
+  - bar
 published: true
-published_at: "2023-09-09 12:23"
+published_at: 2023-09-09 12:23
+---
+# Content start
+
+
+---
+aaa
+`;
+  const actual = updater.getUpdatedContent();
+  expect(actual).toEqual(expected);
+});
+
+test("update property for nested param", () => {
+  const updater = new Updater();
+  updater.load(input);
+  const param: ZennMetadata = {
+    title: "hoge",
+    emoji: "㊙️",
+    type: "tech",
+    topics: ["fuga", "bar"],
+    published: true,
+    published_at: "2023-09-09 12:23",
+    user_defined: {
+      publish_link: "https://zenn.dev/cybozu_ept/articles/productivity-weekly-20240124",
+      note: `_本項の執筆者: [@korosuke613](https://zenn.dev/korosuke613)_
+_本項の執筆者: [@defaultcf](https://zenn.dev/defaultcf)_
+_本項の執筆者: [@Kesin11](https://zenn.dev/kesin11)_
+_本項の執筆者: [@r4mimu](https://zenn.dev/r4mimu)_
+_本項の執筆者: [@uta8a](https://zenn.dev/uta8a)_
+`
+    }
+  };
+  updater.updateProperty(param);
+  const expected = `---
+title: hoge
+emoji: ㊙️
+type: tech
+topics:
+  - fuga
+  - bar
+published: true
+published_at: 2023-09-09 12:23
+user_defined:
+  publish_link: https://zenn.dev/cybozu_ept/articles/productivity-weekly-20240124
+  note: |
+    _本項の執筆者: [@korosuke613](https://zenn.dev/korosuke613)_
+    _本項の執筆者: [@defaultcf](https://zenn.dev/defaultcf)_
+    _本項の執筆者: [@Kesin11](https://zenn.dev/kesin11)_
+    _本項の執筆者: [@r4mimu](https://zenn.dev/r4mimu)_
+    _本項の執筆者: [@uta8a](https://zenn.dev/uta8a)_
 ---
 # Content start
 
@@ -159,10 +212,12 @@ test("write file for string", () => {
   updater.load(input);
   updater.updateProperty("published", true);
   const expected = `---
-title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: "😇"
-type: "idea"
-topics: ["ProductivityWeekly", "生産性向上"]
+title: Productivity Weekly (20xx-xx-xx号)
+emoji: 😇
+type: idea
+topics:
+  - ProductivityWeekly
+  - 生産性向上
 published: true
 ---
 # Content start
@@ -180,10 +235,12 @@ test("write file for buffer", () => {
   updater.load(Buffer.from(input));
   updater.updateProperty("published", true);
   const expected = `---
-title: "Productivity Weekly (20xx-xx-xx号)"
-emoji: "😇"
-type: "idea"
-topics: ["ProductivityWeekly", "生産性向上"]
+title: Productivity Weekly (20xx-xx-xx号)
+emoji: 😇
+type: idea
+topics:
+  - ProductivityWeekly
+  - 生産性向上
 published: true
 ---
 # Content start
