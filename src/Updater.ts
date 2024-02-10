@@ -28,7 +28,7 @@ export class InvalidMetadataError extends Error {
 }
 
 export interface ZennMetadata {
-  [p: string]: any;
+  [p: string]: unknown;
   title: string;
   emoji: string;
   type: "idea" | "tech";
@@ -38,8 +38,8 @@ export interface ZennMetadata {
   __content?: string;
 }
 
-const isZennMetadata = (item: any): item is ZennMetadata =>
-  item.title !== undefined;
+const isZennMetadata = (item: unknown): item is ZennMetadata =>
+  (item as ZennMetadata).title !== undefined;
 
 export class Updater {
   private metadata: ZennMetadata | undefined;
@@ -65,7 +65,7 @@ export class Updater {
     }
     this.content = content;
     this.metadata = loadFront(content) as ZennMetadata;
-    delete this.metadata.__content;
+    this.metadata.__content = undefined;
   }
 
   public validateProperty() {
