@@ -169,14 +169,15 @@ test("update property for nested param", () => {
     published: true,
     published_at: "2023-09-09 12:23",
     user_defined: {
-      publish_link: "https://zenn.dev/cybozu_ept/articles/productivity-weekly-20240124",
+      publish_link:
+        "https://zenn.dev/cybozu_ept/articles/productivity-weekly-20240124",
       note: `_本項の執筆者: [@korosuke613](https://zenn.dev/korosuke613)_
 _本項の執筆者: [@defaultcf](https://zenn.dev/defaultcf)_
 _本項の執筆者: [@Kesin11](https://zenn.dev/kesin11)_
 _本項の執筆者: [@r4mimu](https://zenn.dev/r4mimu)_
 _本項の執筆者: [@uta8a](https://zenn.dev/uta8a)_
-`
-    }
+`,
+    },
   };
   updater.updateProperty(param);
   const expected = `---
