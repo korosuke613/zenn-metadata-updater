@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@types/node": "18.18.8",
+    "@types/node": "20.11.17",
     "@types/yaml-front-matter": "4.1.2",
     "@vitest/coverage-v8": "^1.2.2",
     "npm-run-all2": "5.0.0",
