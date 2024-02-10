@@ -1,0 +1,8 @@
+{
+  "packages": {
+    ".": {
+        "package-name": "zenn-metadata-updater",
+        "release-type": "node"
+    }
+  }
+}

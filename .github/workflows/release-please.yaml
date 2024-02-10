@@ -9,16 +9,13 @@ permissions:
   contents: write
   pull-requests: write
   id-token: write
-      
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@cc61a07e2da466bebbc19b3a7dd01d6aecb20d1e # v4.0.2
         id: release
-        with:
-          release-type: node
-          package-name: zenn-metadata-updater
 
       - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.release_created }}
@@ -28,7 +25,7 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - run: npm ci
         if: ${{ steps.release.outputs.release_created }}
