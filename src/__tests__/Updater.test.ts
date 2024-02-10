@@ -5,6 +5,8 @@ import {
   ZennMetadata,
 } from "../Updater";
 
+import { expect, test } from "vitest";
+
 const errorInput = `---
 post: title one
 anArray:
