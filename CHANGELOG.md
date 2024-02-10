@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (2024-02-10)
+## [1.0.0](https://github.com/korosuke613/zenn-metadata-updater/compare/v0.4.0...v1.0.0) (2024-02-10)
 
 
 ### ⚠ BREAKING CHANGES
