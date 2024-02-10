@@ -22,14 +22,8 @@ jobs:
 
       - run: npm ci
 
-      - uses: reviewdog/action-eslint@10ca150f51dbbb963467c37a03c873ba1fa75f91 # v1.20.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          eslint_flags: "./**/*.{ts,js}"
-
-      - name: Run eslint
-        run: npm run lint
+      - name: Run check:ci
+        run: npm run check:ci
 
   test:
     name: test

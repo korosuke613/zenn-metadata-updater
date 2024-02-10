@@ -1,5 +1,5 @@
+import { DumpOptions, dump } from "js-yaml";
 import { loadFront } from "yaml-front-matter";
-import { dump, DumpOptions } from "js-yaml";
 
 export class NotEnoughPropertyError extends Error {
   constructor(
