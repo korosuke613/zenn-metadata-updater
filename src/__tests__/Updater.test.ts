@@ -2,7 +2,7 @@ import {
   InvalidMetadataError,
   NotEnoughPropertyError,
   Updater,
-  ZennMetadata,
+  type ZennMetadata,
 } from "../Updater";
 
 import { expect, test } from "vitest";
