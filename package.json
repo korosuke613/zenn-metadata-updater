@@ -1,6 +1,6 @@
 {
   "name": "zenn-metadata-updater",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update metadata in Zenn markdown file for npm.",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -20,12 +20,18 @@
     "prepublishOnly": "npm-run-all -l -p lint test -s build",
     "clean": "rimraf lib"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/korosuke613/zenn-metadata-updater.git"
   },
-  "keywords": ["node", "zenn", "yaml"],
+  "keywords": [
+    "node",
+    "zenn",
+    "yaml"
+  ],
   "author": "Futa Hirakoba <korosuke613613@gmail.com> (https://korosuke613.github.io/)",
   "license": "MIT",
   "dependencies": {
@@ -38,7 +44,7 @@
     "@types/node": "20.16.5",
     "@types/yaml-front-matter": "4.1.3",
     "@vitest/coverage-v8": "2.0.5",
-    "npm-run-all2": "6.2.3",
+    "npm-run-all2": "6.2.2",
     "rimraf": "6.0.1",
     "vitest": "2.0.5"
   }
